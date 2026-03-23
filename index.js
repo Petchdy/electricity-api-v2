@@ -56,7 +56,7 @@ app.get('/api/users/:province/:year', (req, res) => {
 });
 
 // 5. API: Usage history for a specific province 
-app.get('/api/usage/history/:province', (req, res) => {
+app.get('/api/usage-history/:province', (req, res) => {
     const { province } = req.params;
     const data = loadData('electricity_usages_en.json');
     const result = data.filter(d => d.province_name.toLowerCase() ===
@@ -74,3 +74,10 @@ app.get('/api/users/history/:province', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// Change the bottom of index.js from app.listen(...) to this: 
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => console.log(`Server running on port 
+${PORT}`));
+}
+module.exports = app; // Export for testing 
