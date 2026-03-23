@@ -65,7 +65,7 @@ app.get('/api/usage-history/:province', (req, res) => {
 });
 
 // 6. API: User history for a specific province 
-app.get('/api/users/history/:province', (req, res) => {
+app.get('/api/users-history/:province', (req, res) => {
     const { province } = req.params;
     const data = loadData('electricity_users_en.json');
     const result = data.filter(d => d.province_name.toLowerCase() ===
